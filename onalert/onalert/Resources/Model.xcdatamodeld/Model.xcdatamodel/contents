@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="11759" systemVersion="15G31" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Crime" representedClassName=".Crime" syncable="YES" codeGenerationType="category">
+        <attribute name="id" attributeType="String" syncable="YES"/>
+        <attribute name="latitude" attributeType="Double" defaultValueString="0.0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="longitude" attributeType="Double" defaultValueString="0.0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="time" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="type" attributeType="String" syncable="YES"/>
+        <relationship name="picture" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Photo" inverseName="crime" inverseEntity="Photo" syncable="YES"/>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="id"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
+    </entity>
+    <entity name="Photo" representedClassName=".Photo" syncable="YES" codeGenerationType="category">
+        <attribute name="comment" attributeType="String" syncable="YES"/>
+        <relationship name="crime" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Crime" inverseName="picture" inverseEntity="Crime" syncable="YES"/>
+        <relationship name="data" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PhotoData" inverseName="photo" inverseEntity="PhotoData" syncable="YES"/>
+    </entity>
+    <entity name="PhotoData" representedClassName=".PhotoData" syncable="YES" codeGenerationType="category">
+        <attribute name="data" attributeType="Binary" syncable="YES"/>
+        <relationship name="photo" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Photo" inverseName="data" inverseEntity="Photo" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Crime" positionX="-63" positionY="-18" width="128" height="135"/>
+        <element name="Photo" positionX="-45" positionY="36" width="128" height="90"/>
+        <element name="PhotoData" positionX="-63" positionY="9" width="128" height="75"/>
+    </elements>
+</model>
